@@ -41,7 +41,7 @@ export default function Home() {
                   </Button>
                 </Link>
                 <Link href="/products">
-                  <Button size="lg" variant="outline" className="text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/10">
+                  <Button size="lg" className="bg-white text-primary hover:bg-gray-100">
                     Explore Products
                   </Button>
                 </Link>

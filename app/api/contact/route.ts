@@ -39,13 +39,16 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Log the submission (in production, send email here)
+    // Log the submission with real company email
     console.log('[Contact Form Submission]', {
       timestamp: new Date().toISOString(),
       ...data,
+      companyEmail: 'horizonindiatechnologies@gmail.com',
+      companyPhone: '+91 97514 58300',
     })
 
-    // TODO: Integrate with email service (Nodemailer, SendGrid, AWS SES, etc.)
+    // TODO: Integrate with email service (Nodemailer, SendGrid, AWS SES, Formspree, etc.)
+    // Send to: horizonindiatechnologies@gmail.com
     // For now, log to console and return success
     
     // Success response

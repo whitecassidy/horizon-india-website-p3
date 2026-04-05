@@ -9,8 +9,9 @@ import { Button } from '@/components/ui/button'
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const whatsappNumber = '919123456789'
-  const whatsappMessage = 'Hi, I am interested in your products and services.'
+  const whatsappNumber = '919751458300'
+  const whatsappMessage = 'Hi, I am interested in your products and services. Please contact me.'
+  const phoneNumber = '+91 97514 58300'
 
   return (
     <nav className="sticky top-0 z-50 bg-background border-b border-border shadow-sm">
@@ -48,7 +49,13 @@ export function Navigation() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:flex gap-2">
+          <div className="hidden md:flex gap-3 items-center">
+            <a 
+              href={`tel:${phoneNumber}`}
+              className="text-foreground hover:text-primary transition-colors text-sm"
+            >
+              {phoneNumber}
+            </a>
             <a 
               href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
               target="_blank"

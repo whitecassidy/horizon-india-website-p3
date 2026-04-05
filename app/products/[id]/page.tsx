@@ -98,7 +98,7 @@ export default function ProductDetailPage() {
                   </Button>
                 </Link>
                 <a 
-                  href={`https://wa.me/919123456789?text=Hi, I am interested in ${product.name}`}
+                  href={`https://wa.me/919751458300?text=Hi, I am interested in ${product.name}. Please contact me.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1"

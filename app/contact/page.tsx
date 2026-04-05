@@ -100,7 +100,7 @@ function ContactFormContent() {
             onChange={handleChange}
             required
             className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
-            placeholder="+91 98765 43210"
+            placeholder="+91 97514 58300"
           />
         </div>
         <div>
@@ -204,23 +204,23 @@ export default function ContactPage() {
               {
                 icon: Phone,
                 title: 'Phone',
-                details: ['+91 98765 43210', '+91 20 2568 4567'],
+                details: ['+91 97514 58300'],
               },
               {
                 icon: Mail,
                 title: 'Email',
-                details: ['info@horizontech.in', 'sales@horizontech.in'],
+                details: ['horizonindiatechnologies@gmail.com'],
               },
               {
                 icon: MapPin,
                 title: 'Address',
-                details: ['123 Industrial Park', 'Pune, Maharashtra 411001, India'],
+                details: ['Karur & Coimbatore', 'Tamil Nadu, India'],
               },
             ].map((contact, i) => {
               const Icon = contact.icon
               return (
                 <div key={i} className="p-8 border border-border rounded-lg bg-card text-center">
-                  <Icon className="w-8 h-8 text-accent mx-auto mb-4" />
+                  <Icon className="w-8 h-8 text-secondary mx-auto mb-4" />
                   <h3 className="font-semibold text-foreground mb-3">{contact.title}</h3>
                   <div className="space-y-2">
                     {contact.details.map((detail, j) => (
@@ -252,12 +252,25 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Section */}
+      {/* Address Section */}
       <section className="bg-muted py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Visit Us</h2>
-          <div className="w-full h-96 bg-border rounded-lg overflow-hidden flex items-center justify-center">
-            <p className="text-muted-foreground">Map location: Pune, Maharashtra, India</p>
+          <h2 className="text-2xl font-bold text-foreground mb-8 text-center">Our Offices</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="p-8 bg-card rounded-lg border border-border">
+              <h3 className="text-xl font-bold text-foreground mb-4">Head Office - Karur</h3>
+              <p className="text-muted-foreground mb-2">3/126, Mettu Street</p>
+              <p className="text-muted-foreground mb-2">Mettumahadhanapuram, Mahadhanapuram North</p>
+              <p className="text-muted-foreground mb-4">Karur – 639105, Tamil Nadu</p>
+              <a href="tel:+919751458300" className="text-secondary font-semibold hover:underline">+91 97514 58300</a>
+            </div>
+            <div className="p-8 bg-card rounded-lg border border-border">
+              <h3 className="text-xl font-bold text-foreground mb-4">Branch Office - Coimbatore</h3>
+              <p className="text-muted-foreground mb-2">182, Nanjappa Nagar, 5th Street West</p>
+              <p className="text-muted-foreground mb-2">Singanallur</p>
+              <p className="text-muted-foreground mb-4">Coimbatore – 641005, Tamil Nadu</p>
+              <a href="tel:+919751458300" className="text-secondary font-semibold hover:underline">+91 97514 58300</a>
+            </div>
           </div>
         </div>
       </section>

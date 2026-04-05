@@ -10,9 +10,9 @@ export default function AboutPage() {
       {/* Header */}
       <section className="bg-primary text-primary-foreground py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">About Horizon India</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">About Horizon India Technologies</h1>
           <p className="text-lg text-primary-foreground/90">
-            Leading manufacturer of precision measurement instruments since 2005
+            NABL Certified Supplier of Precision Testing Instruments in Tamil Nadu
           </p>
         </div>
       </section>
@@ -24,13 +24,13 @@ export default function AboutPage() {
             <div>
               <h2 className="text-3xl font-bold text-foreground mb-6">Our Story</h2>
               <p className="text-muted-foreground mb-4 text-lg">
-                Founded in 2005, Horizon India Technologies has emerged as a trusted manufacturer of precision measurement instruments serving the automotive, electronics, and industrial sectors across India.
+                Horizon India Technologies, led by proprietor T V Shankar, is a trusted supplier of precision measurement and testing instruments based in Tamil Nadu. With offices in Karur and Coimbatore, we serve leading manufacturers, laboratories, and quality control teams across South India.
               </p>
               <p className="text-muted-foreground mb-4 text-lg">
-                Starting from humble beginnings, we have grown to become a NABL-certified organization with a team of dedicated professionals committed to delivering excellence in every product and service.
+                We specialize in providing high-quality industrial testing equipment along with calibration, servicing, and technical support. Every instrument we deliver meets rigorous industry standards and undergoes comprehensive quality checks.
               </p>
               <p className="text-muted-foreground text-lg">
-                Our journey is driven by a passion for precision, quality, and customer satisfaction. Today, we proudly serve over 1000 clients including leading automobile and electronics manufacturers.
+                With a strong focus on accuracy, reliability, and customer support, we have established ourselves as the preferred choice for precision instruments in Tamil Nadu. Our commitment to excellence ensures consistent performance and long-term partnerships with our clients.
               </p>
             </div>
             <div className="bg-muted rounded-lg overflow-hidden h-96">

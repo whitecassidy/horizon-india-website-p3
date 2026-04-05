@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
-import { Mail, MapPin, Loader2 } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 import { products } from '@/lib/products'
 
 function ContactFormContent() {
@@ -205,38 +205,7 @@ export default function ContactPage() {
       {/* Contact Section */}
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {!hasProductQuery && (
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
-              {/* Contact Info */}
-              {[
-                {
-                  icon: Mail,
-                  title: 'Email',
-                  details: ['horizonindiatechnologies@gmail.com'],
-                },
-                {
-                  icon: MapPin,
-                  title: 'Address',
-                  details: ['Karur & Coimbatore', 'Tamil Nadu, India'],
-                },
-              ].map((contact, i) => {
-                const Icon = contact.icon
-                return (
-                  <div key={i} className="p-8 border border-border rounded-lg bg-card text-center">
-                    <Icon className="w-8 h-8 text-secondary mx-auto mb-4" />
-                    <h3 className="font-semibold text-foreground mb-3">{contact.title}</h3>
-                    <div className="space-y-2">
-                      {contact.details.map((detail, j) => (
-                        <p key={j} className="text-muted-foreground text-sm">
-                          {detail}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          )}
+
 
           {/* Contact Form */}
           <div className="max-w-3xl mx-auto">

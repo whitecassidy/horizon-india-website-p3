@@ -5,7 +5,7 @@ import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Download } from 'lucide-react'
+import { ArrowRight, Download, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
@@ -67,12 +67,10 @@ export default function ProductDetailPage() {
               <h1 className="text-4xl font-bold text-foreground mb-4">{product.name}</h1>
               <p className="text-lg text-muted-foreground mb-6">{product.description}</p>
 
-              {product.price && (
-                <div className="mb-6">
-                  <p className="text-sm text-muted-foreground">Starting from</p>
-                  <p className="text-3xl font-bold text-primary">{product.price}</p>
-                </div>
-              )}
+              <div className="mb-6 p-4 bg-secondary/10 rounded-lg border border-secondary/20">
+                <p className="text-sm text-foreground font-medium">Price: Available on Request</p>
+                <p className="text-xs text-muted-foreground mt-1">Contact us for competitive pricing and custom solutions</p>
+              </div>
 
               <div className="mb-8 pb-8 border-b border-border">
                 <h3 className="font-semibold text-foreground mb-4">Model Code</h3>
@@ -95,10 +93,20 @@ export default function ProductDetailPage() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href={`/contact?product=${product.id}`} className="flex-1">
-                  <Button size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 gap-2">
+                  <Button size="lg" className="w-full bg-secondary text-white hover:bg-secondary/90 gap-2">
                     Request Quote <ArrowRight size={20} />
                   </Button>
                 </Link>
+                <a 
+                  href={`https://wa.me/919123456789?text=Hi, I am interested in ${product.name}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1"
+                >
+                  <Button size="lg" variant="outline" className="w-full gap-2">
+                    <MessageCircle size={20} /> WhatsApp
+                  </Button>
+                </a>
                 {product.pdfSheet && (
                   <Button size="lg" variant="outline" className="gap-2">
                     <Download size={20} /> Download Sheet

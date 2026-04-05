@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Rajdhani, DM_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { WhatsAppButton } from '@/components/whatsapp-button'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -48,6 +49,7 @@ export default function RootLayout({
     <html lang="en" className={`${rajdhani.variable} ${dmSans.variable}`}>
       <body className="font-sans antialiased">
         {children}
+        <WhatsAppButton />
         <Analytics />
       </body>
     </html>

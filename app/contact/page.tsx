@@ -31,11 +31,22 @@ function ContactFormContent() {
     setIsSubmitting(true)
     
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      setSubmitted(true)
-      setFormData({ name: '', email: '', phone: '', company: '', product: productId || '', message: '' })
-      setTimeout(() => setSubmitted(false), 5000)
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitted(true)
+        setFormData({ name: '', email: '', phone: '', company: '', product: productId || '', message: '' })
+        setTimeout(() => setSubmitted(false), 5000)
+      } else {
+        alert('Failed to send inquiry. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      alert('An error occurred. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -153,7 +164,7 @@ function ContactFormContent() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-accent text-accent-foreground hover:bg-accent/90 disabled:opacity-50 gap-2"
+        className="w-full bg-secondary text-white hover:bg-secondary/90 disabled:opacity-50 gap-2"
         size="lg"
       >
         {isSubmitting ? (

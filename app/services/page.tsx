@@ -1,6 +1,6 @@
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
-import { CheckCircle2, Wrench, Phone, Award } from 'lucide-react'
+import { CheckCircle2, Wrench, Phone, Award, Settings, BookOpen } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
@@ -50,6 +50,28 @@ export default function ServicesPage() {
         'Warranty on all products',
       ],
     },
+    {
+      icon: Settings,
+      title: 'AMC & Maintenance',
+      description: 'Annual maintenance contracts to keep your instruments in perfect working condition.',
+      features: [
+        'Preventive maintenance plans',
+        'Regular servicing schedule',
+        'Priority emergency support',
+        'Cost-effective solutions',
+      ],
+    },
+    {
+      icon: BookOpen,
+      title: 'Technical Training',
+      description: 'Expert training programs for proper instrument operation and maintenance.',
+      features: [
+        'Hands-on training sessions',
+        'Online and on-site options',
+        'Certification provided',
+        'Custom training modules',
+      ],
+    },
   ]
 
   return (
@@ -69,22 +91,27 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, i) => {
               const Icon = service.icon
               return (
-                <div key={i} className="border border-border rounded-lg p-8 bg-card hover:shadow-lg transition-shadow">
-                  <Icon className="w-12 h-12 text-accent mb-4" />
+                <div key={i} className="border border-border rounded-lg p-8 bg-card hover:shadow-lg transition-shadow flex flex-col">
+                  <Icon className="w-12 h-12 text-secondary mb-4" />
                   <h3 className="text-2xl font-bold text-foreground mb-3">{service.title}</h3>
                   <p className="text-muted-foreground mb-6">{service.description}</p>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3 flex-1">
                     {service.features.map((feature, j) => (
                       <li key={j} className="flex gap-3">
-                        <span className="text-accent flex-shrink-0 mt-1">✓</span>
+                        <span className="text-secondary flex-shrink-0 mt-1">✓</span>
                         <span className="text-foreground text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
+                  <Link href="/contact" className="mt-6">
+                    <Button className="w-full bg-secondary text-white hover:bg-secondary/90">
+                      Get More Info
+                    </Button>
+                  </Link>
                 </div>
               )
             })}

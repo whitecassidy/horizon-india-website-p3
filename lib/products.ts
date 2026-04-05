@@ -5,7 +5,6 @@ export interface Product {
   description: string
   shortDescription: string
   image: string
-  price?: string
   specs: string[]
   modelCode: string
   features: string[]
@@ -22,7 +21,6 @@ export const products: Product[] = [
     description: 'High-precision digital micrometer with LCD display and automatic zero setting.',
     shortDescription: 'Digital micrometer for precision measurements',
     image: 'https://images.unsplash.com/photo-1581092916550-e323be2ae537?w=300&h=240&fit=crop',
-    price: '₹4,500',
     specs: ['Range: 0-25mm', 'Accuracy: ±0.02mm', 'LCD Display', 'Automatic Zero'],
     modelCode: 'DM-001',
     features: [
@@ -54,7 +52,7 @@ export const products: Product[] = [
     description: 'Stainless steel vernier caliper with fine adjustment and clear scale markings.',
     shortDescription: 'Professional grade vernier caliper',
     image: 'https://images.unsplash.com/photo-1593642632823-8f3c59fa0dcc?w=300&h=240&fit=crop',
-    price: '₹1,200',
+
     specs: ['Range: 0-150mm', 'Resolution: 0.05mm', 'Stainless Steel', 'Fine Adjustment'],
     modelCode: 'VC-150',
     features: [
@@ -86,7 +84,7 @@ export const products: Product[] = [
     description: 'Precision dial gauge with smooth needle movement and easy-to-read scale.',
     shortDescription: 'Dial gauge for precision measurement',
     image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=300&h=240&fit=crop',
-    price: '₹2,800',
+
     specs: ['Range: 0-10mm', 'Graduation: 0.01mm', 'Magnetic Stand Available', 'Heavy Duty'],
     modelCode: 'DG-10',
     features: [
@@ -118,7 +116,7 @@ export const products: Product[] = [
     description: 'Compact digital multimeter with AC/DC voltage, current, and resistance measurement.',
     shortDescription: 'Handheld digital multimeter',
     image: 'https://images.unsplash.com/photo-1579089531341-6d16a4fbe5d3?w=300&h=240&fit=crop',
-    price: '₹3,200',
+
     specs: ['3.5 Digit Display', 'DC: 200V-1000V', 'AC: 200V-750V', 'Ohm: 200Ω-20MΩ'],
     modelCode: 'DM-3.5',
     features: [
@@ -150,7 +148,7 @@ export const products: Product[] = [
     description: 'Precision depth gauge for measuring holes and recesses with accuracy.',
     shortDescription: 'Depth measurement tool',
     image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=240&fit=crop',
-    price: '₹1,800',
+
     specs: ['Range: 0-300mm', 'Resolution: 0.1mm', 'Easy Reading', 'Portable Design'],
     modelCode: 'DPG-300',
     features: [
@@ -182,7 +180,7 @@ export const products: Product[] = [
     description: 'Industrial pressure gauge with glycerin-filled case for vibration resistance.',
     shortDescription: 'Pressure measurement instrument',
     image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=240&fit=crop',
-    price: '₹2,400',
+
     specs: ['Range: 0-10 Bar', 'Accuracy: ±1.6%', 'Glycerin Filled', 'Back Mount'],
     modelCode: 'PG-10',
     features: [
@@ -214,7 +212,7 @@ export const products: Product[] = [
     description: 'Non-destructive ultrasonic thickness measurement for metals and plastics.',
     shortDescription: 'Ultrasonic thickness measurement',
     image: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=300&h=240&fit=crop',
-    price: '₹18,500',
+
     specs: ['Range: 1.5-300mm', 'Accuracy: ±1%', 'LCD Display', 'Data Storage'],
     modelCode: 'UTG-300',
     features: [
@@ -246,7 +244,7 @@ export const products: Product[] = [
     description: 'Three-point bore gauge for accurate internal diameter measurement.',
     shortDescription: 'Bore measurement gauge',
     image: 'https://images.unsplash.com/photo-1581092916550-e323be2ae537?w=300&h=240&fit=crop',
-    price: '₹6,200',
+
     specs: ['Range: 50-160mm', 'Resolution: 0.01mm', 'Three-Point Contact', 'Fine Adjustment'],
     modelCode: 'BG-160',
     features: [
@@ -278,7 +276,7 @@ export const products: Product[] = [
     description: 'Complete set of hardened steel pin gauges for hole inspection and setup.',
     shortDescription: 'Pin gauge set for hole inspection',
     image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=240&fit=crop',
-    price: '₹3,500',
+
     specs: ['Range: 1-10mm', '49 Pieces', 'Hardened Steel', 'Carrying Case Included'],
     modelCode: 'PGS-10',
     features: [

@@ -29,20 +29,20 @@ export default function Home() {
                 Precision Engineering Since 2005
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
-                Precision Measurement Instruments for Industry
+                NABL Certified Testing Equipment Supplier in Tamil Nadu
               </h1>
               <p className="text-lg text-primary-foreground/90 text-balance">
                 NABL certified manufacturer of high-precision measuring instruments trusted by leading automotive and electronics companies across India.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/products">
-                  <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 gap-2">
-                    Explore Products <ArrowRight size={20} />
+                <Link href="/contact">
+                  <Button size="lg" className="bg-secondary text-white hover:bg-secondary/90 gap-2">
+                    Request Quote <ArrowRight size={20} />
                   </Button>
                 </Link>
-                <Link href="/contact">
+                <Link href="/products">
                   <Button size="lg" variant="outline" className="text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/10">
-                    Get a Quote
+                    Explore Products
                   </Button>
                 </Link>
               </div>
@@ -63,13 +63,18 @@ export default function Home() {
       </section>
 
       {/* Trust Bar */}
-      <section className="bg-card border-b border-border py-8">
+      <section className="bg-card border-b border-border py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-muted-foreground font-semibold mb-6">TRUSTED BY LEADING COMPANIES</p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center opacity-60">
-            {['Maruti', 'Hyundai', 'TVS', 'Bosch', 'Flex'].map((company) => (
-              <div key={company} className="text-center font-semibold text-foreground/60 text-sm md:text-base">
-                {company}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { label: 'NABL Accredited', icon: '✓' },
+              { label: 'ISO/IEC 17025', icon: '✓' },
+              { label: '24h Response', icon: '✓' },
+              { label: '50+ Clients', icon: '✓' },
+            ].map((trust, i) => (
+              <div key={i} className="text-center">
+                <div className="text-3xl font-bold text-secondary mb-2">{trust.icon}</div>
+                <p className="text-sm font-semibold text-foreground">{trust.label}</p>
               </div>
             ))}
           </div>

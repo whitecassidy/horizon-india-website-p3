@@ -69,7 +69,6 @@ export default function ProductsPage() {
                   name={product.name}
                   category={product.category}
                   image={product.image}
-                  price={product.price}
                   specs={product.specs}
                   description={product.description}
                 />

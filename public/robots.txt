@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /products
+Allow: /services
+Allow: /about
+Allow: /contact
+Allow: /nabl
+Allow: /resources
+Disallow: /admin
+Disallow: /studio
+Disallow: /api
+
+Sitemap: https://horizon-india.com/sitemap.xml

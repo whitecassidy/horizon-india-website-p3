@@ -5,11 +5,16 @@ import { useSearchParams } from 'next/navigation'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
-import { Mail, Phone, MapPin, Loader2 } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
+import { products } from '@/lib/products'
 
 function ContactFormContent() {
   const searchParams = useSearchParams()
   const productId = searchParams.get('product')
+  
+  // Find product name from ID
+  const product = products.find(p => p.id === productId)
+  const productName = product?.name || ''
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({
@@ -17,7 +22,7 @@ function ContactFormContent() {
     email: '',
     phone: '',
     company: '',
-    product: productId || '',
+    product: productName || '',
     message: '',
   })
 
@@ -31,11 +36,22 @@ function ContactFormContent() {
     setIsSubmitting(true)
     
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      setSubmitted(true)
-      setFormData({ name: '', email: '', phone: '', company: '', product: productId || '', message: '' })
-      setTimeout(() => setSubmitted(false), 5000)
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitted(true)
+        setFormData({ name: '', email: '', phone: '', company: '', product: productName || '', message: '' })
+        setTimeout(() => setSubmitted(false), 5000)
+      } else {
+        alert('Failed to send inquiry. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      alert('An error occurred. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -89,7 +105,7 @@ function ContactFormContent() {
             onChange={handleChange}
             required
             className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
-            placeholder="+91 98765 43210"
+            placeholder="+91 XXXXX XXXXX"
           />
         </div>
         <div>
@@ -120,10 +136,9 @@ function ContactFormContent() {
           className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
         >
           <option value="">Select a product</option>
-          <option value="digital-micrometer">Digital Micrometer</option>
-          <option value="vernier-caliper">Vernier Caliper</option>
-          <option value="dial-gauge">Dial Gauge</option>
-          <option value="multimeter">Digital Multimeter</option>
+          {products.map(p => (
+            <option key={p.id} value={p.name}>{p.name}</option>
+          ))}
           <option value="other">Other</option>
         </select>
       </div>
@@ -153,7 +168,7 @@ function ContactFormContent() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-accent text-accent-foreground hover:bg-accent/90 disabled:opacity-50 gap-2"
+        className="w-full bg-secondary text-white hover:bg-secondary/90 disabled:opacity-50 gap-2"
         size="lg"
       >
         {isSubmitting ? (
@@ -170,6 +185,9 @@ function ContactFormContent() {
 }
 
 export default function ContactPage() {
+  const searchParams = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '')
+  const hasProductQuery = searchParams.has('product')
+
   return (
     <main className="bg-background">
       <Navigation />
@@ -177,9 +195,9 @@ export default function ContactPage() {
       {/* Header */}
       <section className="bg-primary text-primary-foreground py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{hasProductQuery ? 'Request Quote' : 'Contact Us'}</h1>
           <p className="text-lg text-primary-foreground/90">
-            Get in touch with our team for quotes, support, or any inquiries
+            {hasProductQuery ? 'Complete the form below to request a quote for your selected product' : 'Get in touch with our team for quotes, support, or any inquiries'}
           </p>
         </div>
       </section>
@@ -187,41 +205,7 @@ export default function ContactPage() {
       {/* Contact Section */}
       <section className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {/* Contact Info */}
-            {[
-              {
-                icon: Phone,
-                title: 'Phone',
-                details: ['+91 98765 43210', '+91 20 2568 4567'],
-              },
-              {
-                icon: Mail,
-                title: 'Email',
-                details: ['info@horizontech.in', 'sales@horizontech.in'],
-              },
-              {
-                icon: MapPin,
-                title: 'Address',
-                details: ['123 Industrial Park', 'Pune, Maharashtra 411001, India'],
-              },
-            ].map((contact, i) => {
-              const Icon = contact.icon
-              return (
-                <div key={i} className="p-8 border border-border rounded-lg bg-card text-center">
-                  <Icon className="w-8 h-8 text-accent mx-auto mb-4" />
-                  <h3 className="font-semibold text-foreground mb-3">{contact.title}</h3>
-                  <div className="space-y-2">
-                    {contact.details.map((detail, j) => (
-                      <p key={j} className="text-muted-foreground text-sm">
-                        {detail}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+
 
           {/* Contact Form */}
           <div className="max-w-3xl mx-auto">
@@ -241,47 +225,62 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="bg-muted py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-foreground mb-6 text-center">Visit Us</h2>
-          <div className="w-full h-96 bg-border rounded-lg overflow-hidden flex items-center justify-center">
-            <p className="text-muted-foreground">Map location: Pune, Maharashtra, India</p>
+      {/* Address Section */}
+      {!hasProductQuery && (
+        <section className="bg-muted py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-foreground mb-8 text-center">Our Offices</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="p-8 bg-card rounded-lg border border-border">
+                <h3 className="text-xl font-bold text-foreground mb-4">Head Office - Karur</h3>
+                <p className="text-muted-foreground mb-2">3/126, Mettu Street</p>
+                <p className="text-muted-foreground mb-2">Mettumahadhanapuram, Mahadhanapuram North</p>
+                <p className="text-muted-foreground mb-4">Karur – 639105, Tamil Nadu</p>
+              </div>
+              <div className="p-8 bg-card rounded-lg border border-border">
+                <h3 className="text-xl font-bold text-foreground mb-4">Branch Office - Coimbatore</h3>
+                <p className="text-muted-foreground mb-2">182, Nanjappa Nagar, 5th Street West</p>
+                <p className="text-muted-foreground mb-2">Singanallur</p>
+                <p className="text-muted-foreground mb-4">Coimbatore – 641005, Tamil Nadu</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* FAQ Section */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-foreground mb-12 text-center">Frequently Asked Questions</h2>
-          <div className="space-y-6">
-            {[
-              {
-                q: 'What is the typical response time?',
-                a: 'We aim to respond to all inquiries within 24 hours during business days.',
-              },
-              {
-                q: 'Do you offer bulk discounts?',
-                a: 'Yes, we provide competitive pricing for bulk orders. Contact our sales team for quotes.',
-              },
-              {
-                q: 'What is your delivery timeline?',
-                a: 'We deliver across India with typical delivery within 3-5 business days.',
-              },
-              {
-                q: 'Do you provide calibration services?',
-                a: 'Yes, we offer NABL-accredited calibration services for all our products.',
-              },
-            ].map((faq, i) => (
-              <div key={i} className="p-6 border border-border rounded-lg bg-card">
-                <h3 className="font-semibold text-foreground mb-2">{faq.q}</h3>
-                <p className="text-muted-foreground">{faq.a}</p>
-              </div>
-            ))}
+      {!hasProductQuery && (
+        <section className="py-20 md:py-28">
+          <div className="max-w-3xl mx-auto px-4">
+            <h2 className="text-3xl font-bold text-foreground mb-12 text-center">Frequently Asked Questions</h2>
+            <div className="space-y-6">
+              {[
+                {
+                  q: 'What is the typical response time?',
+                  a: 'We aim to respond to all inquiries within 24 hours during business days.',
+                },
+                {
+                  q: 'Do you offer bulk discounts?',
+                  a: 'Yes, we provide competitive pricing for bulk orders. Contact our sales team for quotes.',
+                },
+                {
+                  q: 'What is your delivery timeline?',
+                  a: 'We deliver across India with typical delivery within 3-5 business days.',
+                },
+                {
+                  q: 'Do you provide calibration services?',
+                  a: 'Yes, we offer NABL-accredited calibration services for all our products.',
+                },
+              ].map((faq, i) => (
+                <div key={i} className="p-6 border border-border rounded-lg bg-card">
+                  <h3 className="font-semibold text-foreground mb-2">{faq.q}</h3>
+                  <p className="text-muted-foreground">{faq.a}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <Footer />
     </main>

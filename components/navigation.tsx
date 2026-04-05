@@ -1,21 +1,31 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
+  const whatsappNumber = '919751458300'
+  const whatsappMessage = 'Hi, I am interested in your products and services. Please contact me.'
+
   return (
-    <nav className="sticky top-0 z-50 bg-background border-b border-border">
+    <nav className="sticky top-0 z-50 bg-background border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 font-bold text-xl text-primary">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">H</div>
-            <span className="hidden sm:inline">Horizon</span>
+            <Image 
+              src="/logo.png" 
+              alt="Horizon India Technologies" 
+              width={40}
+              height={40}
+              className="w-10 h-10"
+            />
+            <span className="hidden sm:inline text-base">Horizon India</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -38,9 +48,19 @@ export function Navigation() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex gap-3 items-center">
+            <a 
+              href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline" size="sm" className="gap-2">
+                <MessageCircle size={16} />
+                WhatsApp
+              </Button>
+            </a>
             <Link href="/contact">
-              <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
+              <Button className="bg-secondary text-white hover:bg-secondary/90">
                 Get Quote
               </Button>
             </Link>
@@ -74,11 +94,24 @@ export function Navigation() {
             <Link href="/contact" className="block py-2 text-foreground hover:text-primary transition-colors">
               Contact
             </Link>
-            <Link href="/contact" className="block pt-2 mt-2 border-t border-border">
-              <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                Get Quote
-              </Button>
-            </Link>
+            <div className="flex flex-col gap-2 pt-2 mt-2 border-t border-border">
+              <a 
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full"
+              >
+                <Button variant="outline" size="sm" className="w-full gap-2">
+                  <MessageCircle size={16} />
+                  WhatsApp
+                </Button>
+              </a>
+              <Link href="/contact" className="w-full">
+                <Button className="w-full bg-secondary text-white hover:bg-secondary/90">
+                  Get Quote
+                </Button>
+              </Link>
+            </div>
           </div>
         )}
       </div>

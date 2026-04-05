@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react'
+import { Mail, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react'
 
 export function Footer() {
   return (
@@ -9,9 +9,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-12">
           {/* Company */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Horizon India</h3>
+            <h3 className="font-bold text-lg mb-4">Horizon India Technologies</h3>
             <p className="text-sm opacity-90 mb-4">
-              Leading manufacturer of precision measurement instruments for automotive and electronics industries.
+              Leading supplier of precision testing instruments and calibration services across Tamil Nadu. NABL certified for accuracy and reliability.
             </p>
             <div className="flex gap-4">
               <a href="#" className="hover:opacity-75 transition-opacity" aria-label="LinkedIn">
@@ -54,15 +54,14 @@ export function Footer() {
             <div className="space-y-3 text-sm">
               <div className="flex gap-2 items-start">
                 <MapPin size={16} className="mt-1 flex-shrink-0" />
-                <span className="opacity-90">123 Industrial Park, Pune, India</span>
-              </div>
-              <div className="flex gap-2 items-center">
-                <Phone size={16} className="flex-shrink-0" />
-                <a href="tel:+919876543210" className="hover:opacity-75 transition-opacity">+91 98765 43210</a>
+                <div className="opacity-90">
+                  <p className="font-semibold">Karur & Coimbatore</p>
+                  <p className="text-xs">Tamil Nadu, India</p>
+                </div>
               </div>
               <div className="flex gap-2 items-center">
                 <Mail size={16} className="flex-shrink-0" />
-                <a href="mailto:info@horizontech.in" className="hover:opacity-75 transition-opacity break-all">info@horizontech.in</a>
+                <a href="mailto:horizonindiatechnologies@gmail.com" className="hover:opacity-75 transition-opacity break-all">horizonindiatechnologies@gmail.com</a>
               </div>
             </div>
           </div>

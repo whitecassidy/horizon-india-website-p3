@@ -79,10 +79,10 @@ export default function ServicesPage() {
       <Navigation />
 
       {/* Header */}
-      <section className="bg-primary text-primary-foreground py-16 md:py-24">
+      <section className="bg-background border-b border-border py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
-          <p className="text-lg text-primary-foreground/90">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Our Services</h1>
+          <p className="text-lg text-muted-foreground">
             Complete solutions for your precision measurement and calibration needs
           </p>
         </div>
@@ -95,8 +95,8 @@ export default function ServicesPage() {
             {services.map((service, i) => {
               const Icon = service.icon
               return (
-                <div key={i} className="border border-border rounded-lg p-8 bg-card hover:shadow-lg transition-shadow flex flex-col">
-                  <Icon className="w-12 h-12 text-secondary mb-4" />
+                <div key={i} className="border border-border rounded-lg p-8 bg-background hover:shadow-lg transition-shadow flex flex-col">
+                  <Icon className="w-12 h-12 text-accent mb-4" />
                   <h3 className="text-2xl font-bold text-foreground mb-3">{service.title}</h3>
                   <p className="text-muted-foreground mb-6">{service.description}</p>
                   <ul className="space-y-3 flex-1">

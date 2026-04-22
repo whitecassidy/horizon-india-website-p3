@@ -46,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${rajdhani.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`bg-background ${rajdhani.variable} ${dmSans.variable}`}>
       <body className="font-sans antialiased">
         {children}
         <WhatsAppButton />

@@ -2,18 +2,32 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Menu, X, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { ThemeSwitcher } from '@/components/theme-switcher'
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const whatsappNumber = '919751458300'
   const whatsappMessage = 'Hi, I am interested in your products and services. Please contact me.'
 
   return (
-    <nav className="sticky top-0 z-50 bg-background border-b border-border shadow-sm">
+    <nav className={`sticky top-0 z-50 transition-all duration-500 ${
+      isScrolled 
+        ? 'bg-background border-b border-border shadow-lg fixed left-1/2 -translate-x-1/2 top-4 w-11/12 md:max-w-2xl rounded-xl' 
+        : 'w-full bg-background border-b border-border shadow-sm'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -49,6 +63,7 @@ export function Navigation() {
 
           {/* CTA Button */}
           <div className="hidden md:flex gap-3 items-center">
+            <ThemeSwitcher />
             <a 
               href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
               target="_blank"
@@ -60,7 +75,7 @@ export function Navigation() {
               </Button>
             </a>
             <Link href="/contact">
-              <Button className="bg-secondary text-white hover:bg-secondary/90">
+              <Button className="bg-accent text-accent-foreground hover:opacity-90">
                 Get Quote
               </Button>
             </Link>
